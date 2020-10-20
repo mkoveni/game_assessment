@@ -1,15 +1,15 @@
 package dev.rivalani.unitconverter.http;
 
 public class ConversionResponse {
-    private double amout;
+    private double amount;
     private String unit;
 
-    public double getAmout() {
-        return amout;
+    public double getAmount() {
+        return amount;
     }
 
-    public void setAmout(double amout) {
-        this.amout = amout;
+    public void setAmount(double amout) {
+        this.amount = amout;
     }
 
     public String getUnit() {

@@ -14,33 +14,33 @@ import dev.rivalani.unitconverter.service.UnitConverterService;
 
 @RestController
 @RequestMapping("/conversions")
-public class ConvensionController {
+public class ConversionController {
 
     @Autowired
     UnitConverterService unitConverterService;
 
-    @RequestMapping(value = "/ktoc", method = RequestMethod.POST)
+    @RequestMapping(value = "/ktoc", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public ResponseEntity<ConversionResponse> kelvinToCelsius(@RequestBody ConversionRequest conversionRequest) {
         double celsius = unitConverterService.kelvinToCelsius(conversionRequest.getAmount());
 
         return ResponseEntity.ok(generatConversionResponse(celsius, Unit.Celsius));
     }
 
-    @RequestMapping(value = "/ctok", method = RequestMethod.POST)
+    @RequestMapping(value = "/ctok", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public ResponseEntity<ConversionResponse> celsiusToKelvin(@RequestBody ConversionRequest conversionRequest) {
         double kelvin = unitConverterService.celsiusToKelvin(conversionRequest.getAmount());
 
         return ResponseEntity.ok(generatConversionResponse(kelvin, Unit.Kelvin));
     }
 
-    @RequestMapping(value = "/ktom", method = RequestMethod.POST)
+    @RequestMapping(value = "/ktom", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public ResponseEntity<ConversionResponse> kilosToMiles(@RequestBody ConversionRequest conversionRequest) {
         double miles = unitConverterService.kilometerToMile(conversionRequest.getAmount());
 
         return ResponseEntity.ok(generatConversionResponse(miles, Unit.Miles));
     }
 
-    @RequestMapping(value = "/mtok", method = RequestMethod.POST)
+    @RequestMapping(value = "/mtok", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public ResponseEntity<ConversionResponse> milesToKilos(@RequestBody ConversionRequest conversionRequest) {
         double kilos = unitConverterService.mileToKilo(conversionRequest.getAmount());
 
@@ -49,7 +49,7 @@ public class ConvensionController {
 
     private ConversionResponse generatConversionResponse(double amount, Unit unit) {
         ConversionResponse response = new ConversionResponse();
-        response.setAmout(amount);
+        response.setAmount(amount);
         response.setUnit(unit.name());
 
         return response;
